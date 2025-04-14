@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D8A LABS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --color-bg: #0A1F33;
+      --color-light: #E6EFF6;
+      --color-primary: #00BFFF;
+      --color-accent: #00F0FF;
+      --color-shadow: #1C3044;
+      --color-glow: #007CFF;
+      --font-main: 'Orbitron', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--color-bg);
+      color: var(--color-light);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 0 10px var(--color-shadow);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav a {
+      color: var(--color-light);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--color-accent);
+      text-shadow: 0 0 8px var(--color-accent);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .hero img {
+      height: 150px;
+      filter: drop-shadow(0 0 15px var(--color-glow));
+      animation: pulse 3s infinite;
+    }
+
+    .hero h1 {
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--color-accent);
+    }
+
+    .sections {
+      display: grid;
+      gap: 2rem;
+      padding: 4rem 2rem;
+    }
+
+    .section {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-glow);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+      transition: transform 0.3s ease, opacity 0.6s ease;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: var(--color-light);
+      color: var(--color-bg);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .social-icons a {
+      color: var(--color-bg);
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--color-glow);
+      text-shadow: 0 0 10px var(--color-accent);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 15px var(--color-glow));
+      }
+      50% {
+        filter: drop-shadow(0 0 25px var(--color-accent));
+      }
+    }
+
+    @media (min-width: 768px) {
+      .sections {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/path/to/D8Alogo.png" alt="D8A LABS Logo">
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <img src="/path/to/D8Alogo.png" alt="D8A LABS Logo">
+    <h1>Shaping the Future of AI & Data</h1>
+  </section>
+
+  <section class="sections">
+    <div class="section" id="about">
+      <h2>About Us</h2>
+      <p>D8A LABS is a tech startup focusing on AI-powered innovation, data science education, and next-gen tools.</p>
+    </div>
+    <div class="section" id="projects">
+      <h2>Our Projects</h2>
+      <p>Explore intelligent products, research experiments, and community initiatives driven by AI and data.</p>
+    </div>
+    <div class="section" id="contact">
+      <h2>Get In Touch</h2>
+      <p>Interested in collaborating or learning more? Reach out through our contact form or social links below.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 D8A LABS. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal effect
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
